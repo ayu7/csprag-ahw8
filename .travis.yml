@@ -4,6 +4,7 @@ python:
 install:
  - pip install coverage
  - pip install coverage-badge
+ - pip install colorama
 script:
  - python3 -m unittest
  - coverage run -m unittest
