@@ -3,6 +3,8 @@ python:
  - "3.5"
 install:
  - pip install coverage
+ - pip install coverage-badge
 script:
  - python3 -m unittest
  - coverage run -m unittest
+ - coverage-badge -o badge.svg
