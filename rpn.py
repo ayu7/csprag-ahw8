@@ -2,6 +2,7 @@
 
 import operator
 import readline
+import colorama
 
 operators = {
     '+': operator.add,
@@ -9,6 +10,11 @@ operators = {
     '*': operator.mul,
     '/': operator.truediv,
 }
+
+RED = '\033[31m'
+BLUE = '\u001b[44m'
+MAGENTA = '\u001b[35m'
+RESET = '\033[0m'
 
 def calculate(myarg):
     stack = list()
@@ -21,7 +27,12 @@ def calculate(myarg):
             arg2 = stack.pop()
             arg1 = stack.pop()
             result = function(arg1, arg2)
+            colored = BLUE + "Calculation: " + RESET + str(arg1) + MAGENTA + token + RESET + str(arg2) + " = "
+            if (result < 0):
+                colored += RED
+            colored += str(result) + RESET
             stack.append(result)
+            print(colored)
         print(stack)
     if len(stack) != 1:
         raise TypeError("Too many parameters")
